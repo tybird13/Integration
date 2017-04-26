@@ -192,10 +192,10 @@ public class IntegrationHelperClass {
       try {
         String name = brIn.readLine();
         System.out.println("Where will " + name + " start? Enter a positive integer:");
-        int x = safeReadInt();
         System.out.println("How far will " + name + " be able to jump? Enter a positive integer");
         int v = safeReadInt();
         k1.setHopLength(v);
+        int x = safeReadInt();
         k1.setName(name);
         k1.setStartingPoint(x);
         
@@ -214,10 +214,11 @@ public class IntegrationHelperClass {
         System.out.println("What will its name be?");
         String name = brIn.readLine();
         System.out.println("Where will " + name + " start? Enter a positive integer:");
-        int x = safeReadInt();
+        
         System.out.println("How far will " + name + " be able to jump? Enter a positive integer");
         int v = safeReadInt();
         k2.setHopLength(v);
+        int x = safeReadInt();
         k2.setName(name);
         k2.setStartingPoint(x);
         token = false;
@@ -574,13 +575,14 @@ public class IntegrationHelperClass {
     while (token) {
       try {
         input = brIn.readLine();
-        
-        if (input.length() < 3) {
-          throw new IOException();
+        if (input != null) {
+          if (input.length() < 3) {
+            throw new IOException();
+          }
+          
+          // this should throw an error, which means that input IS a string.
+          Double.parseDouble(input);
         }
-        // this should throw an error, which means that input IS a string.
-        Double.parseDouble(input);
-        
         // this should only ever be executed if the user enters a string of
         // numbers.
         System.err.println("Please enter a word with 3 or more letters.");
@@ -638,11 +640,11 @@ public class IntegrationHelperClass {
     while (token) {
       try {
         name = brIn.readLine();
-        
-        Double.parseDouble(name); // this code should throw an error...
-        // this code should never run...
-        System.err.println("Please dont give him a name with numbers in it, that's mean...");
-        
+        if (name != null) {
+          Double.parseDouble(name); // this code should throw an error...
+          // this code should never run...
+          System.err.println("Please dont give him a name with numbers in it, that's mean...");
+        }
       } catch (IOException e) {
         System.err.println("Whoops, something went wrong!");
         
@@ -651,12 +653,13 @@ public class IntegrationHelperClass {
       }
     }
     
-    Kangaroo james = new Kangaroo("AAGGHHHHH!!!!", name);
+    Animal james = new Kangaroo("AAGGHHHHH!!!!", name);
     System.out.println("Your new baby kangaroo's name is " + name);
     System.out.println("He says: ");
-    System.out.println(james.makeNoise()); // Kangaroo doesn't implement this method, it inherits it
-                                           // from the super class, Animal.
     
+    // Kangaroo doesn't implement the 'makeNoise' method, it inherits it
+    // from the super class, Animal.
+    System.out.println(james.makeNoise());
   }
   
   /**

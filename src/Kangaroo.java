@@ -15,7 +15,7 @@ public class Kangaroo extends Animal {
   
   // The kangaroo will inherit the field of 'name' through inheritance
   /**
-   * The distance over which the kangaroo travels in one hop
+   * The distance over which the kangaroo travels in one hop.
    */
   private int hopLength;
   /**
@@ -28,10 +28,6 @@ public class Kangaroo extends Animal {
    * Constructs a kangaroo with a name, a non-negative starting point, and a non-negative hop
    * length.
    *
-   * @throws NumberFormatException
-   *           if the starting point, or the hop length is negative
-   * @see #currentLocation
-   * @see #hopLength
    * @param n
    *          The {@link #name} of the kangaroo (string)
    * @param h
@@ -39,6 +35,10 @@ public class Kangaroo extends Animal {
    * @param s
    *          The starting point of the kangaroo. A non-negative integer x value that gets assigned
    *          to {@link #currentLocation}.
+   * @throws NumberFormatException
+   *           if the starting point, or the hop length is negative
+   * @see #currentLocation
+   * @see #hopLength
    */
   public Kangaroo(String n, int h, int s) {
     super(n);
@@ -68,15 +68,17 @@ public class Kangaroo extends Animal {
    * This constructor accepts the name of the Kangaroo as a parameter, and passes it to the Parent
    * constructor (Animal).
    * 
-   * @param n
+   * @param name
    *          - the name of the Kangaroo.
+   * @param noise
+   *          - the noise the kangaroo makes.
    */
   public Kangaroo(String name, String noise) {
     super(name, noise);
   }
   
   /**
-   * Sets the name of the Kangaroo
+   * Sets the name of the Kangaroo.
    *
    * @param n
    *          - Name of the kangaroo
@@ -103,7 +105,7 @@ public class Kangaroo extends Animal {
   }
   
   /**
-   * Sets the starting point of the kangaroo
+   * Sets the starting point of the kangaroo.
    *
    * @param s
    *          - Positive integer starting location of the kangaroo
@@ -127,7 +129,7 @@ public class Kangaroo extends Animal {
   }
   
   /**
-   * Returns the current location of the kangaroo
+   * Returns the current location of the kangaroo.
    *
    * @return {@link #currentLocation} - The current location of the kangaroo in the positive x
    *         direction
